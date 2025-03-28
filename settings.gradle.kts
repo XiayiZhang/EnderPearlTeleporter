@@ -1,1 +1,1 @@
-rootProject.name = "EnderPearlTeleporter"
+rootProject.name = "EndPearlTeleporter"

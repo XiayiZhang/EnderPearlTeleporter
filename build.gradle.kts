@@ -1,15 +1,15 @@
 plugins {
-    kotlin("jvm") version "2.1.20"
+    kotlin("jvm") version "2.1.20-RC2"
     id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
-group = "io.github.xiyayizhang"
+group = "org.xiyayizhang"
 version = "1.1-SNAPSHOT"
 
 repositories {
     mavenCentral()
-    maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/") {
-        name = "spigotmc-repo"
+    maven("https://repo.papermc.io/repository/maven-public/") {
+        name = "papermc-repo"
     }
     maven("https://oss.sonatype.org/content/groups/public/") {
         name = "sonatype"
@@ -17,7 +17,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.spigotmc:spigot-api:1.21-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.21-R0.1-SNAPSHOT")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 }
 
@@ -34,7 +34,7 @@ tasks.processResources {
     val props = mapOf("version" to version)
     inputs.properties(props)
     filteringCharset = "UTF-8"
-    filesMatching("plugin.yml") {
+    filesMatching("paper-plugin.yml") {
         expand(props)
     }
 }
@@ -42,7 +42,7 @@ tasks {
     shadowJar {
         archiveClassifier.set("")
         dependencies {
-            include(dependency("org.jetbrains.kotlin:kotlin-stdlib:2.1.20"))
+            include(dependency("org.jetbrains.kotlin:kotlin-stdlib:2.1.20-RC2"))
         }
     }
 }
